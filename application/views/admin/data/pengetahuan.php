@@ -194,6 +194,12 @@
 
         </div>
         <!-- /.container-fluid -->
+        <script>
+            function deleteConfirm(url) {
+                $('#btn-delete').attr('href', url);
+                $('#deleteModal').modal();
+            }
+        </script>
 
         <?= $this->pagination->create_links() ?>
 
