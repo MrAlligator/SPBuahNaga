@@ -48,7 +48,7 @@ class Home extends CI_Controller
     {
         //PAGINATION
         //Config
-        $config['base_url'] = 'http://localhost/siskar_buahnaga/admin/home/gejala';
+        $config['base_url'] = 'http://localhost/SPBuahNaga/admin/home/gejala';
         $config['total_rows'] = $this->model_gejala->hitung_jumlah_gejala();
         $config['per_page'] = '7';
 
@@ -101,7 +101,7 @@ class Home extends CI_Controller
     {
         //PAGINATION
         //Config
-        $config['base_url'] = 'http://localhost/siskar_buahnaga/admin/home/pengetahuan';
+        $config['base_url'] = 'http://localhost/SPBuahNaga/admin/home/pengetahuan';
         $config['total_rows'] = $this->model_pengetahuan->hitung_jumlah_pengetahuan();
         $config['per_page'] = '10';
 
