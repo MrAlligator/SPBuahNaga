@@ -11,6 +11,7 @@ class Home extends CI_Controller
         $this->load->model("model_hamapenyakit");
         $this->load->model("model_gejala");
         $this->load->model("model_pengetahuan");
+        $this->load->model('model_user');
     }
 
     public function index()
@@ -19,6 +20,8 @@ class Home extends CI_Controller
         $data['copyright'] = 'Politeknik Negeri Jember 2022';
         $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
         $data['jumlahhama'] = $this->model_hamapenyakit->hitung_jumlah_hama();
+        $data['jumlahgejala'] = $this->model_gejala->hitung_jumlah_gejala();
+        $data['jumlahuser'] = $this->model_user->hitung_jumlah_user();
         // var_dump($data);
         // die;
         $this->load->view('template/header', $data);
@@ -147,6 +150,58 @@ class Home extends CI_Controller
         $this->load->view('template/sidebar', $data);
         $this->load->view('template/topbar', $data);
         $this->load->view('admin/data/pengetahuan', $data);
+        $this->load->view('template/footer', $data);
+    }
+
+    public function user()
+    {
+        //PAGINATION
+        //Config
+        $config['base_url'] = 'http://localhost/SPBuahNaga/admin/home/user';
+        $config['total_rows'] = $this->model_user->hitung_jumlah_user();
+        $config['per_page'] = '10';
+
+        //Styling
+        $config['full_tag_open'] = '<nav><ul class="pagination pagination-sm justify-content-center">';
+        $config['full_tag_close'] = '</ul></nav>';
+
+        $config['first_link'] = 'First';
+        $config['first_tag_open'] = '<li class="page-item">';
+        $config['first_tag_close'] = '</li>';
+
+        $config['last_link'] = 'Last';
+        $config['last_tag_open'] = '<li class="page-item">';
+        $config['last_tag_close'] = '</li>';
+
+        $config['next_link'] = '&raquo';
+        $config['next_tag_open'] = '<li class="page-item">';
+        $config['next_tag_close'] = '</li>';
+
+        $config['prev_link'] = '&laquo';
+        $config['prev_tag_open'] = '<li class="page-item">';
+        $config['prev_tag_close'] = '</li>';
+
+        $config['cur_tag_open'] = '<li class="page-item active"><a class="page-link">';
+        $config['cur_tag_close'] = '</a></li>';
+
+        $config['num_tag_open'] = '<li class="page-item">';
+        $config['num_tag_close'] = '</li>';
+
+        $config['attributes'] = array('class' => 'page-link');
+
+        //Initialize
+        $this->pagination->initialize($config);
+        $data['start'] = $this->uri->segment(4);
+        $data['pengguna'] = $this->model_user->getSome($config['per_page'], $data['start']);
+        $data['title'] = 'Data User';
+        $data['copyright'] = 'Politeknik Negeri Jember 2022';
+        $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+        // var_dump($data);
+        // die;
+        $this->load->view('template/header', $data);
+        $this->load->view('template/sidebar', $data);
+        $this->load->view('template/topbar', $data);
+        $this->load->view('admin/data/user', $data);
         $this->load->view('template/footer', $data);
     }
 
@@ -316,14 +371,14 @@ class Home extends CI_Controller
                 redirect("admin/home/pengetahuan");
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data gagal ditambahkan</div>');
-                redirect("admin/home/tambahprb");
+                redirect("admin/home/tambah_prb");
             }
         }
     }
 
     public function editprb($id = null)
     {
-        $data['title'] = 'Data Gejala';
+        $data['title'] = 'Data Probabilitas';
         $data['copyright'] = 'Politeknik Negeri Jember 2022';
         $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
         $data['prbid'] = $this->model_pengetahuan->getById($id);
@@ -361,6 +416,57 @@ class Home extends CI_Controller
         if ($this->model_pengetahuan->delete($id)) {
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil dihapus</div>');
             redirect(site_url('admin/home/pengetahuan'));
+        }
+    }
+
+    public function tambah_us()
+    {
+        $data['title'] = 'Data User';
+        $data['copyright'] = 'Politeknik Negeri Jember 2022';
+        $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['pengguna'] = $this->model_user->getAll();
+        $data['jumlahuser'] = $this->model_user->hitung_jumlah_user();
+        $exe = $this->model_user;
+        // var_dump($data);
+        // die;
+        $this->form_validation->set_rules('name', 'Nama', 'required|trim', [
+            'required' => 'Nama tidak boleh kosong'
+        ]);
+        $this->form_validation->set_rules('hak', 'Hak Akses', 'required', [
+            'required' => 'Hak Akses tidak boleh kosong'
+        ]);
+        $this->form_validation->set_rules('password', 'Password', 'required', [
+            'required' => 'Password tidak boleh kosong'
+        ]);
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[tb_user.email]', [
+            'required' => 'Email tidak boleh kosong',
+            'valid_email' => 'Email Tidak Valid',
+            'is_unique' => 'Email yang anda gunakan sudah terdaftar'
+        ]);
+        if ($this->form_validation->run() == false) {
+            $this->load->view('template/header', $data);
+            $this->load->view('template/sidebar', $data);
+            $this->load->view('template/topbar', $data);
+            $this->load->view('admin/data/+user', $data);
+            $this->load->view('template/footer', $data);
+        } else {
+            if ($exe->save() == true) {
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil ditambahkan</div>');
+                redirect("admin/home/user");
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data gagal ditambahkan</div>');
+                redirect("admin/home/tambah_us");
+            }
+        }
+    }
+
+    public function deleteus($id = null)
+    {
+        if (!isset($id)) show_404();
+
+        if ($this->model_user->delete($id)) {
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil dihapus</div>');
+            redirect(site_url('admin/home/user'));
         }
     }
 }

@@ -7,7 +7,7 @@
                         <div class="col-md-10">
                             <h6 class="m-0 font-weight-bold text-primary">Data Gejala Tanaman Buah Naga</h6>
                         </div>
-                        <?php if (isset($user['email']) && $user['role_id'] == 1 || 2) : ?>
+                        <?php if (isset($user['email']) && $user['role_id'] == 1 || $user['role_id'] == 2) : ?>
                             <div class="col-md-2">
                                 <a href="<?= base_url('admin/home/tambah_gj') ?>" class="btn btn-success btn-icon-split pull-right">
                                     <span class="icon text-white-50">

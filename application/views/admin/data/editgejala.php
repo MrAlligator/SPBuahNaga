@@ -21,7 +21,7 @@
                         <div class="col-auto">
                             <label class="visually-hidden" for="nama">Gejala</label>
                             <div class="input-group">
-                                <input type="text" class="form-control text-capitalize" id="gejala" name="gejala" value="<?php echo $gjid->gejala ?>"><?= form_error('nama', '<small class="text-danger pl-3">', '</small>') ?>
+                                <input type="text" class="form-control text-capitalize" id="gejala" name="gejala" value="<?php echo $gjid->gejala ?>"><?= form_error('gejala', '<small class="text-danger pl-3">', '</small>') ?>
                             </div>
                         </div>
                         <div class="col-auto">

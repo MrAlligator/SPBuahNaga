@@ -147,10 +147,18 @@
             </a>
             <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="<?= base_url('admin/home/hamapenyakit') ?>">Hama dan Penyakit</a>
-                    <a class="collapse-item" href="<?= base_url('admin/home/gejala') ?>">Gejala</a>
-                    <a class="collapse-item" href="<?= base_url('admin/home/solusi') ?>">Solusi</a>
-                    <a class="collapse-item" href="<?= base_url('admin/home/pengetahuan') ?>">Pengetahuan</a>
+                    <?php if ($user['role_id'] == 1) : ?>
+                        <a class="collapse-item" href="<?= base_url('admin/home/hamapenyakit') ?>">Hama dan Penyakit</a>
+                        <a class="collapse-item" href="<?= base_url('admin/home/gejala') ?>">Gejala</a>
+                        <a class="collapse-item" href="<?= base_url('admin/home/solusi') ?>">Solusi</a>
+                        <a class="collapse-item" href="<?= base_url('admin/home/pengetahuan') ?>">Pengetahuan</a>
+                        <a class="collapse-item" href="<?= base_url('admin/home/user') ?>">User</a>
+                    <?php else : ?>
+                        <a class="collapse-item" href="<?= base_url('admin/home/hamapenyakit') ?>">Hama dan Penyakit</a>
+                        <a class="collapse-item" href="<?= base_url('admin/home/gejala') ?>">Gejala</a>
+                        <a class="collapse-item" href="<?= base_url('admin/home/solusi') ?>">Solusi</a>
+                        <a class="collapse-item" href="<?= base_url('admin/home/pengetahuan') ?>">Pengetahuan</a>
+                    <?php endif; ?>
                 </div>
             </div>
         </li>
