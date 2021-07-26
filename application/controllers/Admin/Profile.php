@@ -49,7 +49,7 @@ class Profile extends CI_Controller
 
                 if ($this->upload->do_upload('image')) {
                     $old_image = $data['user']['foto_user'];
-                    if ($old_image != 'expert.jpg' || 'farmer.png' || 'administrator.png') {
+                    if ($old_image != 'expert.png' || 'farmer.png' || 'administrator.png') {
                         unlink(FCPATH . 'assets/img/userimage/' . $old_image);
                     }
                     $new_image = $this->upload->data('file_name');
