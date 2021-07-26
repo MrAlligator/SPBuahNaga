@@ -23,7 +23,7 @@ class Model_pertanyaan extends CI_Model
 
     public function getRandom()
     {
-        $this->db->limit(10, 0);
+        $this->db->limit(9, 0);
         $this->db->order_by("RAND ()");
         return $this->db->get($this->_table)->result();
 

@@ -13,6 +13,7 @@ class Gejala extends CI_Controller
 
     public  function index()
     {
+        $data['pertanyaan'] = $this->model_pertanyaan->getRandom();
         $data['pertanyaan'] = $this->model_pertanyaan->get4();
         $data['title'] = 'Konsul Hama dan Penyakit';
         $data['copyright'] = 'Politeknik Negeri Jember 2022';
