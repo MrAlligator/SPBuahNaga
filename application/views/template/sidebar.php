@@ -2,19 +2,19 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <?php if (isset($user['email'])) : ?>
+    <?php if (isset($user['email']) && $user['role_id'] == 1 || $user['role_id'] == 2) : ?>
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('admin/home') ?>">
             <div class="sidebar-brand-icon">
-                <i class="fas fa-user-md"></i>
+                <img src="<?= base_url('assets/img/logosp.png') ?>" alt="" width="30px" height="30px">
             </div>
-            <div class="sidebar-brand-text mx-3">Sistem Pakar</div>
+            <div class="sidebar-brand-text mx-3">Sistem Pakar Buah Naga</div>
         </a>
     <?php else : ?>
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url() ?>">
             <div class="sidebar-brand-icon">
-                <i class="fas fa-user-md"></i>
+                <img src="<?= base_url('assets/img/logosp.png') ?>" alt="" width="30px" height="30px">
             </div>
-            <div class="sidebar-brand-text mx-3">Sistem Pakar</div>
+            <div class="sidebar-brand-text mx-3">Sistem Pakar Buah Naga</div>
         </a>
     <?php endif; ?>
 
@@ -69,7 +69,7 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="<?= base_url('konsul1') ?>">Hama dan Penyakit </a>
+                <a class="collapse-item" href="<?= base_url('konsul') ?>">Hama dan Penyakit </a>
                 <a class="collapse-item" href="cards.html">Pemilihan Waktu Panen</a>
             </div>
         </div>

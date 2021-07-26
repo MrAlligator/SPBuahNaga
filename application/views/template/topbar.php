@@ -6,7 +6,7 @@
 
         <!-- Topbar -->
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
+            <img src="<?= base_url('assets/img/spbuahnaga.png') ?>" alt="" width="180px" height="40px">
             <!-- Topbar Navbar -->
             <ul class="navbar-nav ml-auto">
 

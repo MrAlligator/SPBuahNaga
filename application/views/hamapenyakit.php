@@ -5,12 +5,12 @@
             <h1 class="h5 mb-4 text-gray-800">Isi data berikut!</h1>
             <div class="col-lg-7">
                 <?php echo $this->session->flashdata('message'); ?>
-                <form action="<?= base_url('konsul1') ?>" method="post" enctype="multipart/form-data">
+                <form action="<?= base_url('konsul') ?>" method="post" enctype="multipart/form-data">
                     <div class="form-group row">
                         <?php if (isset($user['email'])) : ?>
                             <label for="nama" class="col-sm-3 col-form-label">Nama*</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="nama" name="nama" value="<?php echo $user['name']; ?>" disabled><?= form_error('nama', '<small class="text-danger pl-3">', '</small>') ?>
+                                <input type="text" class="form-control" id="nama" name="nama" value="<?php echo $user['name']; ?>" readonly><?= form_error('nama', '<small class="text-danger pl-3">', '</small>') ?>
                             </div>
                         <?php else : ?>
                             <label for="nama" class="col-sm-3 col-form-label">Nama*</label>

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Konsul1 extends CI_Controller
+class Konsul extends CI_Controller
 {
     public function __construct()
     {
@@ -35,10 +35,10 @@ class Konsul1 extends CI_Controller
         } else {
             if ($identitas->save() == true) {
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil ditambahkan</div>');
-                redirect("gejala/pertanyaan1");
+                redirect("gejala/pertanyaan");
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data gagal ditambahkan</div>');
-                redirect("konsul1");
+                redirect("konsul");
             }
         }
     }

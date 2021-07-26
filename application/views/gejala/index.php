@@ -40,10 +40,7 @@
             </div>
         </div>
     </div>
-
-</div>
-<!-- /.container-fluid -->
-<?= $this->pagination->create_links() ?>
+    <!-- /.container-fluid -->
 </div>
 <!-- End of Main Content -->
 </div>

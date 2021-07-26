@@ -16,15 +16,15 @@
                         <input type="text" class="form-control" id="identitas" name="identitas" value="" hidden>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" id="radio1" name="radio" value="Terjadi pada buah">
+                        <input class="form-check-input" type="radio" id="radio1" name="radio" value="2">
                         <label class="form-check-label" for="inlineRadio1">Terjadi pada Buah</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" id="radio2" name="radio" value="Terjadi pada sulur dan batang">
+                        <input class="form-check-input" type="radio" id="radio2" name="radio" value="1">
                         <label class="form-check-label" for="inlineRadio2">Terjadi pada Sulur dan / atau Batang </label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" id="radio3" name="radio" value="Terjadi pada buah, sulur dan batang">
+                        <input class="form-check-input" type="radio" id="radio3" name="radio" value="3">
                         <label class="form-check-label" for="inlineRadio3">Terjadi pada keduanya</label>
                     </div>
                     <hr>
