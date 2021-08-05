@@ -29,7 +29,10 @@
                                     <th width="50px">No</th>
                                     <th width="130px">Kode Gejala</th>
                                     <th>Gejala</th>
-                                    <th width="250px">Perintah</th>
+                                    <?php if (isset($user['email']) && $user['role_id'] == 1 || $user['role_id'] == 2) : ?>
+                                        <th width="250px">Perintah</th>
+                                    <?php else : ?>
+                                    <?php endif; ?>
                                 </tr>
                             </thead>
                             <tbody>
@@ -46,10 +49,13 @@
                                         <td>
                                             <?php echo $phenomenon->gejala ?>
                                         </td>
-                                        <td>
-                                            <a class="btn text-primary" href="<?php echo site_url('admin/home/editgj/' . $phenomenon->id_gejala) ?>"><i class="fas fa-edit"></i> Ubah</a>
-                                            <a onclick="deleteConfirm('<?php echo site_url('admin/home/deletegj/' . $phenomenon->id_gejala) ?>')" href="#!" class="btn text-danger"><i class="fas fa-trash"></i> Hapus</a>
-                                        </td>
+                                        <?php if (isset($user['email']) && $user['role_id'] == 1 || $user['role_id'] == 2) : ?>
+                                            <td>
+                                                <a class="btn text-primary" href="<?php echo site_url('admin/home/editgj/' . $phenomenon->id_gejala) ?>"><i class="fas fa-edit"></i> Ubah</a>
+                                                <a onclick="deleteConfirm('<?php echo site_url('admin/home/deletegj/' . $phenomenon->id_gejala) ?>')" href="#!" class="btn text-danger"><i class="fas fa-trash"></i> Hapus</a>
+                                            </td>
+                                        <?php else : ?>
+                                        <?php endif; ?>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>

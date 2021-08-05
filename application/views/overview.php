@@ -6,12 +6,6 @@
             <p class="">Sistem ini merupakan sistem yang didesain untuk mempermudah petani - petani buah naga dalam mendiagnosa hama dan penyakit yang menyerang tanaman buah naga.
                 Keluaran yang dihasilkan adalah diagnosa hama atau penyakit apa yang menyerang tanaman buah naga beserta solusi apa yang harus dilakukan saat diketahui tanaman buah naga diserang hama atau penyakit tersebut.
                 Dicantumkan pula berapa persentase keakuratan diagnosa dari hama atau penyakit yang menyerang.</p>
-            <div class="row">
-                <div class="col-md">
-                    <a class="btn btn-primary" href="<?= base_url('konsul1') ?>">Konsultasi</a>
-                </div>
-            </div>
-
         </div>
         <!-- /.container-fluid -->
 

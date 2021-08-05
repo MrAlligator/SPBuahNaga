@@ -18,7 +18,13 @@
                         <div class="form-group">
                             <label for="gj">Gejala</label>
                             <select id="gj" class="form-control">
-                                <option selected="<?= $prbid->id_gejala ?>"></option>
+                                <?php foreach ($pengetahuan as $ilmu) { ?>
+                                    <option selected="<?= $ilmu->id_gejala ?>">
+                                        <?php
+                                        echo $gjid->gejala
+                                        ?>
+                                    </option>
+                                <?php } ?>
                                 <?php foreach ($gejala as $gj) { ?>
                                     <option value="<?php echo $gj->id_gejala ?>"><?php echo $gj->gejala ?> </option>
                                 <?php } ?>

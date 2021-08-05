@@ -2,7 +2,11 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-
+    <!-- <?php var_dump($o1) ?>
+    <br>
+    <?php var_dump($o2) ?>
+    <br>
+    <?php var_dump($o3) ?> -->
     <?php foreach ($pertanyaan as $ask) : ?>
         <div class="card text-center">
             <div class="card-header">
@@ -15,17 +19,19 @@
                     <div class="col-lg-3">
                         <input type="text" class="form-control" id="identitas" name="identitas" value="" hidden>
                     </div>
+                    <?php foreach ($o1 as $opsi1) : ?>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" id="radio1" name="radio1" value="<?php echo $ask->opsi1 ?>">
+                            <label class="form-check-label" for="inlineRadio1"><?= $opsi1->gejala ?></label>
+                        </div>
+                    <?php endforeach; ?>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" id="radio1" name="radio" value="2">
-                        <label class="form-check-label" for="inlineRadio1">Terjadi pada Buah</label>
+                        <input class="form-check-input" type="radio" id="radio2" name="radio2" value="<?php echo $ask->opsi2 ?>">
+                        <label class="form-check-label" for="inlineRadio2"></label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" id="radio2" name="radio" value="1">
-                        <label class="form-check-label" for="inlineRadio2">Terjadi pada Sulur dan / atau Batang </label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" id="radio3" name="radio" value="3">
-                        <label class="form-check-label" for="inlineRadio3">Terjadi pada keduanya</label>
+                        <input class="form-check-input" type="radio" id="radio3" name="radio3" value="<?php echo $ask->opsi3 ?>">
+                        <label class="form-check-label" for="inlineRadio3"></label>
                     </div>
                     <hr>
                     <div class="col">
