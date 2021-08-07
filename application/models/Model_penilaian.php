@@ -18,10 +18,11 @@ class Model_penilaian extends CI_Model
         $result = array();
         foreach ($_POST['gjl'] as $key => $val) {
             $result[] = array(
+                'hamapenyakit' => $_POST['hama'],
                 'gejala' => $_POST['gjl'][$key]
             );
         }
-        $this->db->insert_batch($this->_table, $result);
+        return $this->db->insert_batch($this->_table, $result);
         // $post = $this->input->post();
         // $this->id_hamapenyakit = $post["hp"];
         // return $this->db->insert($this->_table, $this);
