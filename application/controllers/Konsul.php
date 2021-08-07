@@ -8,13 +8,18 @@ class Konsul extends CI_Controller
         parent::__construct();
         $this->load->library('form_validation');
         $this->load->model('model_identitas');
+        $this->load->model('model_random');
+        $this->load->model('model_pertanyaan');
     }
 
     public function index()
     {
         $identitas = $this->model_identitas;
+        $random = $this->model_random;
 
         $data['title'] = 'Konsul Hama dan Penyakit';
+        $data['wajib'] = $this->model_pertanyaan->get();
+        $data['umum'] = $this->model_pertanyaan->getRandom();
         $data['copyright'] = 'Politeknik Negeri Jember 2022';
         $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
         // var_dump($data);

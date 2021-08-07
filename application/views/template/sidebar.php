@@ -63,6 +63,12 @@
         </div>
     </li>
 
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('penilaian') ?>">
+            <i class="fas fa-clipboard"></i>
+            <span>Penilaian Pakar</span></a>
+    </li>
+
     <?php if (isset($user['email'])) : ?>
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
@@ -104,7 +110,7 @@
     </div>
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('overview/about') ?>">
-            <i class="fas fa-clipboard"></i>
+            <i class="fas fa-info-circle"></i>
             <span>Tentang Sistem</span></a>
     </li>
 
