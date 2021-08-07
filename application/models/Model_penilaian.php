@@ -26,11 +26,4 @@ class Model_penilaian extends CI_Model
         // $this->id_hamapenyakit = $post["hp"];
         // return $this->db->insert($this->_table, $this);
     }
-
-    public function sv()
-    {
-        $post = $this->input->post();
-        $this->hamapenyakit = $post["hama"];
-        return $this->db->insert($this->_table, $this);
-    }
 }

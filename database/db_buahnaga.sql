@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 25 Jul 2021 pada 19.46
+-- Waktu pembuatan: 07 Agu 2021 pada 11.43
 -- Versi server: 10.4.8-MariaDB
 -- Versi PHP: 7.3.10
 
@@ -95,6 +95,41 @@ INSERT INTO `tb_gejala` (`id_gejala`, `kode_gejala`, `gejala`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `tb_gejalapakar`
+--
+
+CREATE TABLE `tb_gejalapakar` (
+  `id_gejalapakar` int(11) NOT NULL,
+  `hamapenyakit` text NOT NULL,
+  `gejala` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tb_gejalapakar`
+--
+
+INSERT INTO `tb_gejalapakar` (`id_gejalapakar`, `hamapenyakit`, `gejala`) VALUES
+(0, '', 'Terjadi pada buah, sulur dan batang\r\n'),
+(0, '', 'Kulit buah berbintik-bintik cokelat \r\n'),
+(0, '', 'Cabang atau batang busuk\r\n'),
+(0, '', 'Pentil buah rontok\r\n'),
+(0, '', 'Terdapat bekas gigitan dibagian pinggir batang atau sulur\r\n'),
+(0, '', 'Busuk kering dibagian tepi batang \r\n'),
+(0, '', 'Terjadi pada sulur dan batang\r\n'),
+(0, '', 'Cabang atau batang busuk\r\n'),
+(0, '', 'Cabang atau batang kering\r\n'),
+(0, '', 'Pentil buah kerdil atau kecil\r\n'),
+(0, '', 'Pentil buah rontok\r\n'),
+(0, '', 'Terjadi pada sulur dan batang\r\n'),
+(0, '', 'Terjadi pada buah\r\n'),
+(0, '', 'Terjadi pada buah, sulur dan batang\r\n'),
+(0, '', 'Kuncup bunga dikerubungi semut \r\n'),
+(0, '', 'Cabang atau batang berwarna kuning kusam\r\n'),
+(0, '', 'Cabang atau batang busuk\r\n');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `tb_hamapenyakit`
 --
 
@@ -151,9 +186,7 @@ CREATE TABLE `tb_identitas` (
 --
 
 INSERT INTO `tb_identitas` (`id_identitas`, `nama`, `jenis`, `lokasi`) VALUES
-(1, 'Rendhy Pratama P', 'Hylocereus Costaricensis', 'Banyuwangi'),
-(2, 'Rizki Widya', 'Hylocereus undatus', 'Banyuwangi'),
-(3, 'Rizki Widya', 'Hylocereus undatus', 'Banyuwangi');
+(1, 'Silviana Widya Lestari', 'Hylocereus undatus', 'Banyuwangi');
 
 -- --------------------------------------------------------
 
@@ -433,8 +466,8 @@ INSERT INTO `tb_pengetahuan` (`id_pengetahuan`, `id_hamapenyakit`, `id_gejala`, 
 (260, 5, 50, 0.01),
 (261, 5, 51, 0.01),
 (262, 5, 52, 0.01),
-(263, 6, 1, 0.4),
-(264, 6, 2, 0.4),
+(263, 6, 1, 0.01),
+(264, 6, 2, 0.01),
 (265, 6, 3, 0.8),
 (266, 6, 4, 0.6),
 (267, 6, 5, 0.6),
@@ -702,17 +735,41 @@ INSERT INTO `tb_pengetahuan` (`id_pengetahuan`, `id_hamapenyakit`, `id_gejala`, 
 
 CREATE TABLE `tb_pertanyaan` (
   `id_pertanyaan` int(11) NOT NULL,
-  `pertanyaan` text NOT NULL
+  `pertanyaan` text NOT NULL,
+  `opsi1` int(11) NOT NULL,
+  `gb_opsi1` text NOT NULL DEFAULT 'default.jpg',
+  `nm_opsi1` text NOT NULL,
+  `opsi2` int(11) NOT NULL,
+  `gb_opsi2` text NOT NULL DEFAULT 'default.jpg',
+  `nm_opsi2` text NOT NULL,
+  `opsi3` int(11) NOT NULL,
+  `gb_opsi3` text NOT NULL DEFAULT 'default.jpg',
+  `nm_opsi3` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `tb_pertanyaan`
 --
 
-INSERT INTO `tb_pertanyaan` (`id_pertanyaan`, `pertanyaan`) VALUES
-(1, 'Dimana gejala - gejala ditemukan?\r'),
-(2, 'Apakah kuncup bunga dikerubungi oleh semut?\r'),
-(3, 'Apakah terdapat cangkang disekitar tanaman?');
+INSERT INTO `tb_pertanyaan` (`id_pertanyaan`, `pertanyaan`, `opsi1`, `gb_opsi1`, `nm_opsi1`, `opsi2`, `gb_opsi2`, `nm_opsi2`, `opsi3`, `gb_opsi3`, `nm_opsi3`) VALUES
+(1, 'Gejala mana yang muncul atau ditemukan?', 4, 'default.jpg', 'Kuncup bunga dikerubungi semut ', 5, 'default.jpg', 'Kulit buah berbintik-bintik cokelat ', 6, 'default.jpg', 'Cabang atau batang berwarna kuning kusam'),
+(2, 'Gejala mana yang muncul atau ditemukan?', 7, 'default.jpg', 'Cabang atau batang busuk', 8, 'default.jpg', 'Cabang atau batang kering', 9, 'default.jpg', 'Pentil buah kerdil atau kecil'),
+(3, 'Gejala mana yang muncul atau ditemukan?', 10, 'default.jpg', 'Pentil buah rontok', 11, 'default.jpg', 'Pada cabang yang tidak terkena sinar matahari berwarna kusam', 12, 'default.jpg', 'Terdapat semut pada area yang tidak terkena sinar matahari'),
+(4, 'Gejala mana yang muncul atau ditemukan?', 13, 'default.jpg', 'Terdapat bekas gigitan dibagian pinggir batang atau sulur', 14, 'default.jpg', 'Bekas gigitan bagian ujungnya bergerigi tipis dan halus seperti bekas parutan', 15, 'default.jpg', 'Tunas terlihat rusak dan mengering di bekas parutan'),
+(5, 'Gejala mana yang muncul atau ditemukan?', 16, 'default.jpg', 'Terdapat jejak berupa lendir berwarna keperakan', 17, 'default.jpg', 'Batang dan tanaman buah naga berlubang dan habis', 18, 'default.jpg', 'Terdapat kotoran berwarna hitam pada sulur atau tiang penyangga atau permukaan tanah'),
+(6, 'Gejala mana yang muncul atau ditemukan?', 19, 'default.jpg', 'Buah terlihat berlubang', 20, 'default.jpg', 'Lubang berbentuk khas bekas patukan paruh', 21, 'default.jpg', 'Daging buah terlihat kosong'),
+(7, 'Gejala mana yang muncul atau ditemukan?', 22, 'default.jpg', 'Buah menjadi busuk', 23, 'default.jpg', 'Permukaan kulit buah berselaput di permukaan buah', 24, 'default.jpg', 'Terdapat lilin berwarna putih di permukaan buah'),
+(8, 'Gejala mana yang muncul atau ditemukan?', 25, 'default.jpg', 'Buah agak berkerut', 26, 'default.jpg', 'Buah menguning', 27, 'default.jpg', 'Buah mengecil'),
+(9, 'Gejala mana yang muncul atau ditemukan?', 28, 'default.jpg', 'Buah kempes', 29, 'default.jpg', 'Buah layu', 30, 'default.jpg', 'Buah kering'),
+(10, 'Gejala mana yang muncul atau ditemukan?', 31, 'default.jpg', 'Kusam pada sulur', 32, 'default.jpg', 'Muncul belang-belang berwarna kuning', 33, 'default.jpg', 'Terdapat bintik ? bintik halus kecoklatan pada batang'),
+(11, 'Gejala mana yang muncul atau ditemukan?', 34, 'default.jpg', 'Jaringan klorofil pada kulit cabang berubah warna menjadi cokelat', 35, 'default.jpg', 'Terdapat bercak ? bercak kecil, kering, timbul dan kasar jika diraba', 36, 'default.jpg', 'Pusat bercak berwarna coklat tua dilingkari warna cokelat yang lebih muda'),
+(12, 'Gejala mana yang muncul atau ditemukan?', 37, 'default.jpg', 'Cabang atau batang layu', 38, 'default.jpg', 'Terdapat lendir putih kekuningan ', 39, 'default.jpg', 'Cabang tanaman mengkerut '),
+(13, 'Gejala mana yang muncul atau ditemukan?', 40, 'default.jpg', 'Cabang tanaman busuk berwarna coklat', 41, 'default.jpg', 'Busuk pada pangkal batang berbatas dengan tanah', 42, 'default.jpg', 'Cabang atau batang berkerut '),
+(14, 'Gejala mana yang muncul atau ditemukan?', 43, 'default.jpg', 'Terdapat lendir putih kekuningan ', 44, 'default.jpg', 'Cabang atau batang tampak basah', 45, 'default.jpg', 'Ada bercak berwarna orange yang menyebar tidak beraturan'),
+(15, 'Gejala mana yang muncul atau ditemukan?', 46, 'default.jpg', 'Busuk basah batang muncul bercak kuning', 47, 'default.jpg', 'Bercak membesar sehingga diameternya mencapai 5 ? 15mm dan dibatasi dengan warna merah yang jelas', 48, 'default.jpg', 'Batang Berair'),
+(16, 'Gejala mana yang muncul atau ditemukan?', 49, 'default.jpg', 'Busuk kering dibagian tepi batang ', 50, 'default.jpg', 'Busuk basah atau berlendir bagian ujung batang ', 0, 'default.jpg', ''),
+(17, 'Gejala mana yang muncul atau ditemukan?', 51, 'default.jpg', 'Terdapat bulu putih bagian pangkal batang', 52, 'default.jpg', 'Batang berwarna kecoklatan', 0, 'default.jpg', ''),
+(18, 'Dimana gejala - gejala muncul atau ditemukan?', 1, 'default.jpg', 'Terjadi pada sulur dan batang', 2, 'default.jpg', 'Terjadi pada buah', 3, 'default.jpg', 'Terjadi pada buah, sulur dan batang');
 
 -- --------------------------------------------------------
 
@@ -739,6 +796,49 @@ INSERT INTO `tb_user` (`id_user`, `name`, `email`, `foto_user`, `password`, `rol
 (7, 'Widya Rizki', 'resest003@gmail.com', 'expert1.png', '$2y$10$qV3hs4I8uwuni5qg6irOXer23twKkqUNyEIcVAbyaLD8jLmaVGbbW', 2, 1, 1619068160),
 (8, 'Rizki Widya', 'rizkiw8778@gmail.com', 'administraror1.png', '$2y$10$Q7LlWXaF1.6tlkdoTC5wbuKCuHc.ydfPq6OvYur8z8TYnAtfwQdVW', 1, 1, 1619068190),
 (9, 'Silviana Widya Lestari', 'silvianawidya46@gmail.com', 'farmer.png', '$2y$10$JbyrsNXJF4lOrYm7HErTcuqF53NdWLwdkM.B3lB/DlTvi74gIhNfm', 3, 1, 1627234284);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tmp_final`
+--
+
+CREATE TABLE `tmp_final` (
+  `id_final` int(11) NOT NULL,
+  `id_gejala` int(11) NOT NULL,
+  `id_hamapenyakit` int(11) NOT NULL,
+  `probabilitas` float NOT NULL,
+  `hasil_probabilitas` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tmp_gejala`
+--
+
+CREATE TABLE `tmp_gejala` (
+  `id_user` int(11) NOT NULL,
+  `id_gejala` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tmp_random`
+--
+
+CREATE TABLE `tmp_random` (
+  `id_random` int(11) NOT NULL,
+  `nama` varchar(128) NOT NULL,
+  `jenis` varchar(128) NOT NULL,
+  `lokasi` varchar(128) NOT NULL,
+  `id_pertanyaan` int(11) NOT NULL,
+  `pertanyaan` text NOT NULL,
+  `opsi1` int(11) NOT NULL,
+  `opsi2` int(11) NOT NULL,
+  `opsi3` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -811,6 +911,18 @@ ALTER TABLE `tb_user`
   ADD PRIMARY KEY (`id_user`);
 
 --
+-- Indeks untuk tabel `tmp_final`
+--
+ALTER TABLE `tmp_final`
+  ADD PRIMARY KEY (`id_final`);
+
+--
+-- Indeks untuk tabel `tmp_random`
+--
+ALTER TABLE `tmp_random`
+  ADD PRIMARY KEY (`id_random`);
+
+--
 -- Indeks untuk tabel `user_role`
 --
 ALTER TABLE `user_role`
@@ -842,7 +954,7 @@ ALTER TABLE `tb_hasil`
 -- AUTO_INCREMENT untuk tabel `tb_identitas`
 --
 ALTER TABLE `tb_identitas`
-  MODIFY `id_identitas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_identitas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_pengetahuan`
@@ -854,13 +966,19 @@ ALTER TABLE `tb_pengetahuan`
 -- AUTO_INCREMENT untuk tabel `tb_pertanyaan`
 --
 ALTER TABLE `tb_pertanyaan`
-  MODIFY `id_pertanyaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_pertanyaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT untuk tabel `tmp_random`
+--
+ALTER TABLE `tmp_random`
+  MODIFY `id_random` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_role`
