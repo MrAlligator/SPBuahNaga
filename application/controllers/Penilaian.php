@@ -33,7 +33,7 @@ class Penilaian extends CI_Controller
             $this->load->view('penilaian/input', $data);
             $this->load->view('template/footer', $data);
         } else {
-            if ($penilaian->save() == true && $penilaian->sv() == true) {
+            if ($penilaian->save() == true) {
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil ditambahkan</div>');
                 redirect("penilaian");
             } else {
